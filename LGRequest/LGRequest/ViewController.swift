@@ -12,7 +12,23 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       
+        
+        
+        
+        NetManager.shared.getHomeData(timeStr: "0", page: "10", sucessBlock: { (response) in
+            
+            let model = response as? HomeModel
+            
+            print(model?.code ?? 0)
+            print(model?.msg ?? "")
+            print(model?.data?.noticeLive?.liveTitle ?? "")
+            
+            
+        }) { (error) in
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
